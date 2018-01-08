@@ -1,0 +1,44 @@
+html {
+  background: red;
+  font-family: arial, sans-serif;
+}
+
+#parent-div {
+  text-align: center;
+}
+
+h1,
+h6,
+p {
+  color: white;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h6 {
+  display: inline;
+  font-size: 1em;
+  margin: 5%;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+button {
+  background-color: white;
+  margin: 1em;
+  padding: 1.5em;
+  border: 0.25em solid blue;
+  border-radius: 3em;
+  font-weight: 800;
+}
+
+button:hover {
+  transition: 1s;
+  background: purple;
+  color: white;
+  cursor: pointer;
+}

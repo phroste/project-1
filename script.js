@@ -2,17 +2,18 @@ var turn = -1;
 var allQuestions = [
   {
     question: 1,
-    song: "audio/babeimgonnaleaveyou.m4a",
-    choices: [
-      "You Shook Me",
-      "How Many More Times",
-      "Good Times, Bad Times",
-      "Babe, I'm Gonna Leave You"
-    ],
-    correctAnswer: "Babe, I'm Gonna Leave You"
+    song: "audio/useme.m4a",
+    choices: ["Lean on Me", "Use Me", "Better Off Dead", "Harlem"],
+    correctAnswer: "Use Me"
   },
   {
     question: 2,
+    song: "audio/howlinforyou.m4a",
+    choices: ["Tighten Up", "The Only One", "Howlin' For You", "Next Girl"],
+    correctAnswer: "Howlin' For You"
+  },
+  {
+    question: 3,
     song: "audio/allalongthewatchtower.m4a",
     choices: [
       "Purple Haze",
@@ -23,27 +24,16 @@ var allQuestions = [
     correctAnswer: "All Along The Watchtower"
   },
   {
-    question: 3,
-    song: "audio/drunkinlove.m4a",
-    choices: ["Jealous", "Drunk In Love", "Pretty Hurts", "No Angel"],
-    correctAnswer: "Drunk In Love"
-  },
-  {
     question: 4,
-    song: "audio/everytearsdisappears.m4a",
-    choices: [
-      "Every Tears Disappears",
-      "Rattlesnake",
-      "Bring Me Your Loves",
-      "Regret"
-    ],
-    correctAnswer: "Every Tears Disappears"
+    song: "audio/rumine.m4a",
+    choices: ["Arabella", "Fireside", "One For The Road", "R U Mine?"],
+    correctAnswer: "R U Mine?"
   },
   {
     question: 5,
-    song: "audio/howlinforyou.m4a",
-    choices: ["Tighten Up", "The Only One", "Howlin' For You", "Next Girl"],
-    correctAnswer: "Howlin' For You"
+    song: "audio/drunkinlove.m4a",
+    choices: ["Jealous", "Drunk In Love", "Pretty Hurts", "No Angel"],
+    correctAnswer: "Drunk In Love"
   },
   {
     question: 6,
@@ -53,9 +43,14 @@ var allQuestions = [
   },
   {
     question: 7,
-    song: "audio/rumine.m4a",
-    choices: ["Arabella", "Fireside", "One For The Road", "R U Mine?"],
-    correctAnswer: "R U Mine?"
+    song: "audio/everytearsdisappears.m4a",
+    choices: [
+      "Every Tears Disappears",
+      "Rattlesnake",
+      "Bring Me Your Loves",
+      "Regret"
+    ],
+    correctAnswer: "Every Tears Disappears"
   },
   {
     question: 8,
@@ -104,15 +99,20 @@ var allQuestions = [
   },
   {
     question: 13,
-    song: "audio/useme.m4a",
-    choices: ["Lean on Me", "Use Me", "Better Off Dead", "Harlem"],
-    correctAnswer: "Use Me"
-  },
-  {
-    question: 14,
     song: "audio/youmakemewanna.m4a",
     choices: ["You Make Me Wanna", "I Will", "My Way", "Just Like Me"],
     correctAnswer: "You Make Me Wanna"
+  },
+  {
+    question: 14,
+    song: "audio/babeimgonnaleaveyou.m4a",
+    choices: [
+      "You Shook Me",
+      "How Many More Times",
+      "Good Times, Bad Times",
+      "Babe, I'm Gonna Leave You"
+    ],
+    correctAnswer: "Babe, I'm Gonna Leave You"
   }
 ];
 

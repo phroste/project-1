@@ -1,10 +1,18 @@
 html {
-  background: red;
   font-family: arial, sans-serif;
+  background: green;
+  font-size: 1.5em;
+  color: white;
 }
 
 #parent-div {
+  max-width: 60em;
+  max-height: 100em;
+  border: 0.25em solid black;
+  border-radius: 3em;
+  margin: 5em;
   text-align: center;
+  background: black;
 }
 
 h1,
@@ -17,6 +25,10 @@ h1 {
   font-size: 2.5em;
 }
 
+.heading {
+  text-align: center;
+}
+
 h6 {
   display: inline;
   font-size: 1em;
@@ -25,20 +37,37 @@ h6 {
 
 p {
   font-size: 1.25em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 button {
+  font-size: 0.6em;
   background-color: white;
   margin: 1em;
   padding: 1.5em;
-  border: 0.25em solid blue;
+  border: 0.25em solid green;
   border-radius: 3em;
   font-weight: 800;
+  transition: 1s;
 }
 
 button:hover {
   transition: 1s;
-  background: purple;
+  background: green;
   color: white;
+  border: 0.25em solid black;
   cursor: pointer;
+}
+
+.winLosePage {
+  max-width: 60em;
+  max-height: 60em;
+  margin: 5em;
+  padding-left: 10em;
+  padding-right: 10em;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
 }

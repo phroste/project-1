@@ -1,4 +1,4 @@
-var turn = 0;
+var turn = -1;
 var allQuestions = [
   {
     question: 1,
@@ -93,12 +93,15 @@ correctScore = 0;
 var incorrectScore;
 incorrectScore = 0;
 
-var currentSong = 0;
+var currentSong = -1;
 var didUserMakeAChoice = false;
 console.log(didUserMakeAChoice);
 
 // select the parent-div container by id
 var selectParentDiv = document.querySelector("#parent-div");
+
+// select the h1 by id
+var selectH1 = document.querySelector("#heading");
 
 // creating the correct answers scoreboard
 var createScoreboard1 = document.createElement("h6");
@@ -119,7 +122,8 @@ createStartButton.innerText = "Start Game";
 // create and append gameIntro to parent-div container
 var gameIntro = document.createElement("p");
 gameIntro.innerText =
-  "Instructions: You will listen to 9 song snippets. Choose the correct song title 5 times, you win! Choose the wrong song title 5 times, you lose! Ready to play?";
+  "Instructions: \n You will listen to 9 song snippets. Choose the correct song title 5 times, you win! Choose the wrong song title 5 times, you lose! Ready to play?";
+gameIntro.classList.add("intro");
 selectParentDiv.appendChild(gameIntro);
 
 // append start button to parent-div
@@ -139,6 +143,7 @@ var audio8 = new Audio(allQuestions[7].song);
 var audio9 = new Audio(allQuestions[8].song);
 var audio10 = new Audio(allQuestions[9].song);
 
+// array of songs, acts as a song list
 var songs = [
   audio1,
   audio2,
@@ -154,29 +159,30 @@ var songs = [
 
 createStartButton.addEventListener("click", startGame);
 
+// starts the game.
 function startGame(e) {
   // createStartButton.style.display = "none";
   // e.target is giving me an error, but is showing the intro start page. not running into any noticeable errors in game
-  e.target.style.display = "none";
-  var questions = gameIntro;
+  e.currentTarget.style.display = "none";
   // instructions to click audio play button
-  questions.innerText = "Click the button to play the song!";
+  gameIntro.innerText = "Click the PLAY button to play song!";
 
   createAudioButton();
   createButtons1();
 }
 
+// creates the audio play button
 function createAudioButton() {
   // creating the 'play' button
   var playButton1 = document.createElement("button");
   playButton1.classList.add("play-button");
-  playButton1.innerText = "Play";
+  playButton1.innerText = "PLAY";
   selectParentDiv.appendChild(playButton1);
 
   playButton1.addEventListener("click", playAudio);
 }
 
-// play current song
+// play current song. starts at 0 and increments every question
 function playAudio() {
   songs[currentSong].play();
 }
@@ -191,9 +197,6 @@ function createButtons1() {
   nextQuestion();
 }
 startGame();
-
-// function check(event) {
-//   if (event.target.innerText == event.target.correctAnswer) {
 
 // checks to see if innerText of the multiChoice button matches the correctAnswer. if correct, increment correctScore. if incorrect, increment incorrectScore. then move on to the next question
 function check(e) {
@@ -213,9 +216,12 @@ function check(e) {
     nextQuestion();
   }
 }
+
+// moves on to the next song and set of questions
 function nextQuestion() {
+  // turn starts at 0 and increments every question. used to track what question it's currently on
   turn++;
-  gameIntro.innerText = "Click the button to play the next song!";
+  gameIntro.innerText = "Click the PLAY button to play the song!";
   currentSong++;
   var multiChoice = document.querySelectorAll(".multiChoice");
   console.log(multiChoice);
@@ -228,14 +234,30 @@ function nextQuestion() {
   checkForWin();
 }
 
+// check winning conditions. when you reach 9 turns, if the correctScore is greater than the incorrectScore, display the win/lose message
 function checkForWin() {
   if (turn == 9) {
     if (correctScore > incorrectScore) {
-      // alert("You won!");
-      selectParentDiv.innerHTML = `You scored ${correctScore} correct out of 9. You Win!`;
+      selectH1.innerText = `You scored ${correctScore} correct out of 9. You Win!`;
+      selectParentDiv.style.backgroundImage = "url('./images/fry.gif')";
+      winStyle();
     } else {
-      // alert("You lost!");
-      selectParentDiv.innerHTML = `You scored ${incorrectScore} incorrect out of 9. You Lose!`;
+      selectH1.innerText = `You scored ${incorrectScore} incorrect out of 9. You Lose!`;
+      selectParentDiv.style.backgroundImage = "url('./images/swaggyp.gif')";
+      winStyle();
     }
   }
+}
+
+// adds win/loss styling, hides previous buttons by setting display to none
+function winStyle() {
+  var selectStart = document.querySelector(".play-button");
+  var multiChoice = document.querySelectorAll(".multiChoice");
+  selectParentDiv.classList.add("winLosePage");
+  gameIntro.style.display = "none";
+  selectStart.style.display = "none";
+  // choose the multiChoice buttons and sets the display to none for each
+  multiChoice.forEach(function(e) {
+    e.style.display = "none";
+  });
 }

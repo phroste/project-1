@@ -84,6 +84,35 @@ var allQuestions = [
     song: "audio/slowjamz.m4a",
     choices: ["Last Call", "School Spirit", "Slow Jamz", "Through the Wire"],
     correctAnswer: "Slow Jamz"
+  },
+  {
+    question: 11,
+    song: "audio/sunshineofyourlove.m4a",
+    choices: [
+      "Strange Brew",
+      "Sunshine of Your Love",
+      "Take It Back",
+      "World of Pain"
+    ],
+    correctAnswer: "Sunshine of Your Love"
+  },
+  {
+    question: 12,
+    song: "audio/whatsthedifference.m4a",
+    choices: ["Light Speed", "Ackrite", "The Watcher", "What's The Difference"],
+    correctAnswer: "What's The Difference"
+  },
+  {
+    question: 13,
+    song: "audio/useme.m4a",
+    choices: ["Lean on Me", "Use Me", "Better Off Dead", "Harlem"],
+    correctAnswer: "Use Me"
+  },
+  {
+    question: 14,
+    song: "audio/youmakemewanna.m4a",
+    choices: ["You Make Me Wanna", "I Will", "My Way", "Just Like Me"],
+    correctAnswer: "You Make Me Wanna"
   }
 ];
 
@@ -122,7 +151,7 @@ createStartButton.innerText = "Start Game";
 // create and append gameIntro to parent-div container
 var gameIntro = document.createElement("p");
 gameIntro.innerText =
-  "Instructions: \n You will listen to 9 song snippets. Choose the correct song title 5 times, you win! Choose the wrong song title 5 times, you lose! Ready to play?";
+  "Instructions: \n You will listen to 13 song snippets. Choose the correct song title 7 times, you win! Choose the wrong song title 7 times, you lose! Ready to play?";
 gameIntro.classList.add("intro");
 selectParentDiv.appendChild(gameIntro);
 
@@ -142,6 +171,17 @@ var audio7 = new Audio(allQuestions[6].song);
 var audio8 = new Audio(allQuestions[7].song);
 var audio9 = new Audio(allQuestions[8].song);
 var audio10 = new Audio(allQuestions[9].song);
+var audio11 = new Audio(allQuestions[10].song);
+var audio12 = new Audio(allQuestions[11].song);
+var audio13 = new Audio(allQuestions[12].song);
+var audio14 = new Audio(allQuestions[13].song);
+
+// sound effects
+var startButtonSound = new Audio("audio/startbutton.wav");
+var correctSound = new Audio("audio/correctsound.wav");
+var incorrectSound = new Audio("audio/incorrectsound.wav");
+var winSound = new Audio("audio/winsound.wav");
+var loseSound = new Audio("audio/losesound.wav");
 
 // array of songs, acts as a song list
 var songs = [
@@ -154,7 +194,11 @@ var songs = [
   audio7,
   audio8,
   audio9,
-  audio10
+  audio10,
+  audio11,
+  audio12,
+  audio13,
+  audio14
 ];
 
 createStartButton.addEventListener("click", startGame);
@@ -163,10 +207,11 @@ createStartButton.addEventListener("click", startGame);
 function startGame(e) {
   // createStartButton.style.display = "none";
   // e.target is giving me an error, but is showing the intro start page. not running into any noticeable errors in game
-  e.currentTarget.style.display = "none";
+  e.target.style.display = "none";
   // instructions to click audio play button
   gameIntro.innerText = "Click the PLAY button to play song!";
-
+  // plays start button audio
+  startButtonSound.play();
   createAudioButton();
   createButtons1();
 }
@@ -196,7 +241,7 @@ function createButtons1() {
   }
   nextQuestion();
 }
-startGame();
+// startGame();
 
 // checks to see if innerText of the multiChoice button matches the correctAnswer. if correct, increment correctScore. if incorrect, increment incorrectScore. then move on to the next question
 function check(e) {
@@ -206,6 +251,7 @@ function check(e) {
     gameIntro.innerText = "Correct";
     correctScore++;
     createScoreboard1.innerText = "Correct: " + correctScore;
+    correctSound.play();
     nextQuestion();
   } else {
     console.log("Wrong Answer!");
@@ -213,6 +259,7 @@ function check(e) {
     gameIntro.innerText = "Incorrect";
     incorrectScore++;
     createScoreboard2.innerText = "Incorrect: " + incorrectScore;
+    incorrectSound.play();
     nextQuestion();
   }
 }
@@ -226,7 +273,7 @@ function nextQuestion() {
   var multiChoice = document.querySelectorAll(".multiChoice");
   console.log(multiChoice);
   for (var i = 0; i < multiChoice.length; i++) {
-    // looping through the 4 multiChoice buttons, accessing the allQuestions object by bracket/dot notation, and populating the buttons with the values from the allQuestions 'choices' key
+    // looping through the 4 multiChoice buttons, accessing the allQuestions object and populating the buttons with the values from the allQuestions 'choices' key
     multiChoice[i].innerText = allQuestions[turn].choices[i];
     multiChoice[i].correctAnswer = allQuestions[turn].correctAnswer;
     multiChoice[i].addEventListener("click", check);
@@ -234,16 +281,18 @@ function nextQuestion() {
   checkForWin();
 }
 
-// check winning conditions. when you reach 9 turns, if the correctScore is greater than the incorrectScore, display the win/lose message
+// check winning conditions. when you reach 13 turns, if the correctScore is greater than the incorrectScore, display the win/lose message
 function checkForWin() {
-  if (turn == 9) {
+  if (turn == 13) {
     if (correctScore > incorrectScore) {
-      selectH1.innerText = `You scored ${correctScore} correct out of 9. You Win!`;
+      selectH1.innerText = `You scored ${correctScore} correct out of 13. You Win!`;
       selectParentDiv.style.backgroundImage = "url('./images/fry.gif')";
+      winSound.play();
       winStyle();
     } else {
-      selectH1.innerText = `You scored ${incorrectScore} incorrect out of 9. You Lose!`;
+      selectH1.innerText = `You scored ${incorrectScore} incorrect out of 13. You Lose!`;
       selectParentDiv.style.backgroundImage = "url('./images/swaggyp.gif')";
+      loseSound.play();
       winStyle();
     }
   }
@@ -260,4 +309,14 @@ function winStyle() {
   multiChoice.forEach(function(e) {
     e.style.display = "none";
   });
+  // sets the start button to display block, adds class start, changes text to 'Replay', and assigns it click event listener
+  createStartButton.style.display = "block";
+  createStartButton.classList.add("start");
+  createStartButton.innerText = "Replay";
+  createStartButton.addEventListener("click", restart);
+}
+
+// reloads the page to restart game
+function restart() {
+  location.reload();
 }

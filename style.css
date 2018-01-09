@@ -15,6 +15,10 @@ html {
   background: black;
 }
 
+.start {
+  margin-left: 20em;
+}
+
 h1,
 h6,
 p {

@@ -8,7 +8,7 @@ README
 
   If you guess the correct song, the correct scoreboard increases by 1. If you guess the incorrect song, the incorrect scoreboard increases by 1.
 
-  If you answer 5 or more songs correct, you win. If you answer 5 or more songs incorrect, you lose.
+  If you answer 7 or more songs correct, you win. If you answer 7 or more songs incorrect, you lose.
 
 * What features did it include?
 
@@ -20,7 +20,7 @@ README
 
   I also had a problem with my functions interacting and bleeding information into each other. I was moving on to the next round of questions by nesting functions. I would call the 'next round' of questions as a function inside the previous one and continue to do that.
 
-  I resolved this by making a single helper function called check() that checks if the song name (the string) inside the current multiple choice matches the correctAnswer value inside my object.
+  I resolved this by using helper functions that check if the song name (the string) inside the current multiple choice matches the correctAnswer value inside my object.
 
   If the song name matches, increment the correctScore counter and call the nextQuestion function that moves to the next round.
 
@@ -34,8 +34,8 @@ README
 
   My approach was to create a parent container div in HTML and create the rest of the elements inside JavaScript.
 
-  I created my 4 multiple choice buttons and started hard coding the song names as innerText individually. I enventually created an object with the song names and populated the buttons using a loop.
+  I created my 4 multiple choice buttons and started inputting the song names as innerText individually. I enventually created an object with the song names and populated the buttons using a loop.
 
   I made song snippets by cutting them in iTunes. In JavaScript, I used the new Audio method and linked them using the filepath name.
 
-  I created functions to check for the correct/incorrect answers, to move on to the next question, and a function to check for the win.
+  I created functions to check for the correct/incorrect answers, to move on to the next question, and a function to check for the winning and losing conditions.

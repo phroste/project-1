@@ -151,7 +151,7 @@ createStartButton.innerText = "Start Game";
 // create and append gameIntro to parent-div container
 var gameIntro = document.createElement("p");
 gameIntro.innerText =
-  "Instructions: \n You will listen to 13 song snippets. Choose the correct song title 7 times, you win! Choose the wrong song title 7 times, you lose! Ready to play?";
+  "Instructions: \n You will listen to 13 song snippets. Choose the correct song title 7 times, you win! Choose the wrong song title 7 times, you lose! \n Ready to play?";
 gameIntro.classList.add("intro");
 selectParentDiv.appendChild(gameIntro);
 

@@ -19,6 +19,11 @@ html {
   margin-left: 20em;
 }
 
+.play-button {
+  display: block;
+  margin-left: 38em;
+}
+
 h1,
 h6,
 p {
@@ -41,8 +46,9 @@ h6 {
 
 p {
   font-size: 1.25em;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 4em;
+  padding-right: 4em;
+  line-height: : 1.5em;
 }
 
 button {

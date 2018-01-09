@@ -243,7 +243,7 @@ function createButtons1() {
 }
 // startGame();
 
-// checks to see if innerText of the multiChoice button matches the correctAnswer. if correct, increment correctScore. if incorrect, increment incorrectScore. then move on to the next question
+// checks to see if the innerText of the multiple choice button matches with correct answer key in the allQuestions object. if correct, increment correctScore. Otherwise, increment the incorrectScore counter. pause the current song so the audio does not bleed over to the next rounf of questions. then move on to the next question
 function check(e) {
   if (e.target.innerText == e.target.correctAnswer) {
     console.log("Correct Answer!");
@@ -275,6 +275,7 @@ function nextQuestion() {
   for (var i = 0; i < multiChoice.length; i++) {
     // looping through the 4 multiChoice buttons, accessing the allQuestions object and populating the buttons with the values from the allQuestions 'choices' key
     multiChoice[i].innerText = allQuestions[turn].choices[i];
+    // populating the multiChoice buttons with the correctAnswer keys (correct songs) in the background and assigning it the correctAnswers from the allQuestions object at each question turn
     multiChoice[i].correctAnswer = allQuestions[turn].correctAnswer;
     multiChoice[i].addEventListener("click", check);
   }

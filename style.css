@@ -3,7 +3,7 @@ html {
   background: green;
   font-size: 1.5em;
   color: white;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 #parent-div {
@@ -13,7 +13,7 @@ html {
   border-radius: 3em;
   margin: 5em;
   text-align: center;
-  background: black;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .start {
@@ -54,10 +54,11 @@ p {
 
 button {
   font-size: 0.6em;
-  background-color: white;
+  background-color: green;
+  color: black;
   margin: 1em;
   padding: 1.5em;
-  border: 0.25em solid green;
+  border: 0.25em solid black;
   border-radius: 3em;
   font-weight: 800;
   transition: 1s;
@@ -69,7 +70,9 @@ button:hover {
   color: white;
   border: 0.25em solid black;
   cursor: pointer;
-  /* box-shadow: 1px 1px;*/
+  /*horizontal offset, vertical offset, blur radius, opt spread radius, color*/
+  box-shadow: 0 1em 1.5em black;
+  opacity: 0.8;
 }
 
 .winLosePage {
